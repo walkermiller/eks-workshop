@@ -12,7 +12,7 @@ locals {
 
 
 odule "eks_blueprints" {
-  source = "../../.."
+  source = "../../../terraform-aws-eks-blueprints"
 
   tenant            = local.tenant
   environment       = local.environment
@@ -56,7 +56,7 @@ odule "eks_blueprints" {
 }
 
 module "eks_blueprints_kubernetes_addons" {
-  source = "../../../modules/kubernetes-addons"
+  source = "../../../terraform-aws-eks-blueprints/modules/kubernetes-addons"
 
   eks_cluster_id               = module.eks_blueprints.eks_cluster_id
   eks_worker_security_group_id = module.eks_blueprints.worker_node_security_group_id
@@ -73,7 +73,6 @@ module "eks_blueprints_kubernetes_addons" {
   enable_cluster_autoscaler           = true
   enable_vpa                          = true
   enable_prometheus                   = true
-  enable_ingress_nginx                = true
   enable_aws_for_fluentbit            = true
   enable_aws_cloudwatch_metrics       = true
   enable_argocd                       = true
