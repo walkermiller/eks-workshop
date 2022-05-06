@@ -97,7 +97,7 @@ module "aws_vpc" {
 # Example to consume eks_blueprints module
 #---------------------------------------------------------------
 module "eks_blueprints" {
-  source = "../../../../terraform-aws-eks-blueprints/"
+  source = "../../../../tf/terraform-aws-eks-blueprints/"
 
   tenant            = local.tenant
   environment       = local.environment
@@ -118,7 +118,18 @@ module "eks_blueprints" {
       instance_types  = ["m5.large"]
       min_size        = "2"
       subnet_ids      = module.aws_vpc.private_subnets
+     bottlerocket     = true
     }
+    mg_5 = {
+      node_group_name = "managed-bottlerocket"
+      instance_types  = ["m5.large"]
+      min_size        = "2"
+      subnet_ids      = module.aws_vpc.private_subnets
+      ami_type        = "BOTTLEROCKET_x86_64"
+      release_version = ""
+      
+    }
+
   }
 
   fargate_profiles = {
@@ -143,7 +154,7 @@ module "eks_blueprints" {
 }
 
 module "eks_blueprints_kubernetes_addons" {
-  source = "../../../../terraform-aws-eks-blueprints/modules/kubernetes-addons"
+  source = "../../../../tf/terraform-aws-eks-blueprints/modules/kubernetes-addons"
 
   eks_cluster_id               = module.eks_blueprints.eks_cluster_id
   eks_worker_security_group_id = module.eks_blueprints.worker_node_security_group_id
