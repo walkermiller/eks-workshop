@@ -8,3 +8,7 @@ terraform.tfstate.backup
 .DS_Store
 *.swp
 .vscode
+content/031_terraform_blueprints/launcheks.files/.terraform.lock.hcl
+content/031_terraform_blueprints/launcheks.files/local_tf_state/
+content/031_terraform_blueprints/launcheks.files/.terraform/
+

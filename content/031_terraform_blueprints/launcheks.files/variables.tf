@@ -1,7 +1,13 @@
-variable "vpc_cidr" {
+variable "region" {
   type        = string
-  default     = "10.1.0.0/16"
-  description = "VPC CIDR range"
+  description = "AWS Region"
+  default     = "us-east-2"
+}
+
+variable "cluster_version" {
+  type        = string
+  description = "Kubernetes Version"
+  default     = "1.21"
 }
 
 variable "tenant" {
@@ -19,5 +25,5 @@ variable "environment" {
 variable "zone" {
   type        = string
   description = "zone, e.g. dev or qa or load or ops etc..."
-  default     = "test"
+  default     = "qa"
 }

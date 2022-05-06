@@ -1,0 +1,5 @@
+tenant          = "aws"
+environment     = "terra"
+zone            = "test"
+region          = "us-east-2"
+cluster_version = "1.21"

@@ -19,10 +19,5 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 `git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git`
 
 ## Deploy EKS
-### Import VPC Resource
-`terraform import `
-### Deploy the EKS CLuster
-`terraform apply -target="module.eks_blueprints"`
 
-### Deploy EKS Addons. 
-`terraform apply -target="module.eks_blueprints_kubernetes_addons"`
+`terraform apply`
