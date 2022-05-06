@@ -97,7 +97,7 @@ module "aws_vpc" {
 # Example to consume eks_blueprints module
 #---------------------------------------------------------------
 module "eks_blueprints" {
-  source = "../../../../tf/terraform-aws-eks-blueprints/"
+  source = "../../../../terraform-aws-eks-blueprints/"
 
   tenant            = local.tenant
   environment       = local.environment
@@ -154,7 +154,7 @@ module "eks_blueprints" {
 }
 
 module "eks_blueprints_kubernetes_addons" {
-  source = "../../../../tf/terraform-aws-eks-blueprints/modules/kubernetes-addons"
+  source = "../../../../terraform-aws-eks-blueprints/modules/kubernetes-addons"
 
   eks_cluster_id               = module.eks_blueprints.eks_cluster_id
   eks_worker_security_group_id = module.eks_blueprints.worker_node_security_group_id
