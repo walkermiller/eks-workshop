@@ -193,7 +193,6 @@ module "eks_blueprints_kubernetes_addons" {
   enable_aws_for_fluentbit            = true
   enable_aws_cloudwatch_metrics       = true
   enable_argocd                       = true
-  enable_fargate_fluentbit            = true
   enable_argo_rollouts                = true
 
   depends_on = [module.eks_blueprints.managed_node_groups]
