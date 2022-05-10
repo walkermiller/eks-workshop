@@ -120,7 +120,7 @@ module "eks_blueprints" {
       subnet_ids      = module.aws_vpc.private_subnets
      bottlerocket     = true
     }
-    # mg_5 = {
+    # mg_bottlerocket_x86 = {
     #   node_group_name = "managed-bottlerocket"
     #   instance_types  = ["m5.large"]
     #   min_size        = "2"
@@ -154,14 +154,10 @@ module "eks_blueprints" {
   fargate_profiles = {
     default = {
       fargate_profile_name = "default"
-      fargate_profile_namespaces = [{
-        namespace = "default"
-        k8s_labels = {
-          Environment = "preprod"
-          Zone        = "dev"
-          env         = "fargate"
-        }
-      }]
+      fargate_profile_namespaces = [
+        {namespace = "default"}
+        {namespace = "nginx-fargate"}
+        ]
 
       subnet_ids = module.aws_vpc.private_subnets
 
@@ -183,7 +179,7 @@ module "eks_blueprints_kubernetes_addons" {
   enable_amazon_eks_kube_proxy         = true
   enable_amazon_eks_aws_ebs_csi_driver = true
 
-  #K8s Add-ons
+  # K8s Add-ons
   enable_aws_efs_csi_driver           = true
   enable_aws_load_balancer_controller = true
   enable_metrics_server               = true
