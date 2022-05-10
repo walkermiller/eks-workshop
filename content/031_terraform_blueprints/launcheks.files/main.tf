@@ -120,17 +120,36 @@ module "eks_blueprints" {
       subnet_ids      = module.aws_vpc.private_subnets
      bottlerocket     = true
     }
-    mg_5 = {
-      node_group_name = "managed-bottlerocket"
-      instance_types  = ["m5.large"]
-      min_size        = "2"
-      subnet_ids      = module.aws_vpc.private_subnets
-      ami_type        = "BOTTLEROCKET_x86_64"
-      release_version = ""
+    # mg_5 = {
+    #   node_group_name = "managed-bottlerocket"
+    #   instance_types  = ["m5.large"]
+    #   min_size        = "2"
+    #   subnet_ids      = module.aws_vpc.private_subnets
+    #   ami_type        = "BOTTLEROCKET_x86_64"
+    #   release_version = ""
+    #   k8s_labels ={
+    #     Environment = "preprod"
+    #     Zone        = "dev"
+    #     env         = "BOTTLEROCKET_x86"
+    #   }
       
-    }
+    # }
+  #   mg_bottlerocket_arm = {
+  #     node_group_name = "managed-bottlerocket-arm"
+  #     instance_types  = ["m6g.large"]
+  #     min_size        = "2"
+  #     subnet_ids      = module.aws_vpc.private_subnets
+  #     ami_type        = "BOTTLEROCKET_ARM_64"
+  #     release_version = ""
+  #     k8s_labels ={
+  #       Environment = "preprod"
+  #       Zone        = "dev"
+  #       env         = "BOTTLEROCKET_ARM"
+  #     }
+      
+  #   }
 
-  }
+  # }
 
   fargate_profiles = {
     default = {
