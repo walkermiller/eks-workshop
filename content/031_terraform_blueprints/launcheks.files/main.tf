@@ -155,7 +155,7 @@ module "eks_blueprints" {
     default = {
       fargate_profile_name = "default"
       fargate_profile_namespaces = [
-        {namespace = "default"}
+        {namespace = "default"}, 
         {namespace = "nginx-fargate"}
         ]
 
