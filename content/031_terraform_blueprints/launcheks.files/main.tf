@@ -155,8 +155,10 @@ module "eks_blueprints" {
     default = {
       fargate_profile_name = "default"
       fargate_profile_namespaces = [
-        {namespace = "default"}, 
-        {namespace = "nginx-fargate"}
+        {namespace = "default" 
+        k8s_labels = {} }, 
+        {namespace = "nginx-fargate"
+        k8s_labels = {} }
         ]
 
       subnet_ids = module.aws_vpc.private_subnets
