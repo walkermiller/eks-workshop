@@ -175,5 +175,6 @@ We've now deployed our NGINX pod to Managed nodegroups running on Amazon Linux 2
 
 ## Install via ArgoCD
 
+[Follow the instructions in the Workshop](https://www.eksworkshop.com/intermediate/290_argocd/configure/)
 
 
