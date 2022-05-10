@@ -12,21 +12,35 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/l
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
+### Install Helm
+```bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | VERIFY_CHECKSUM=false bash
+```
+
 ### Clone Workshop contnet from github
-`git clone https://github.com/walkermiller/eks-workshop`
+```sh
+git clone https://github.com/walkermiller/eks-workshop
+```
 
 ### Clone EKS Terraform Blueprints from github
-`git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git`
+```sh
+git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git
+```
 
 ## Deploy EKS
 
+**Initialize the Terraform project**
 ```bash
 cd eks-workshop/content/031_terraform_blueprints/launcheks.files
 terraform init
 ```
+
+**Allow Terraform to plan the deployment**
 ```bash
 terrafrom plan
 ```
+
+**Apply the Terraform**
 ```bash
 terraform apply
 ```
@@ -97,51 +111,69 @@ aws eks update-kubeconfig --region us-east-2 --name aws-preprod-qa-eks
 ```
 
 ### Deploy to Managed Nodegroup
-Create namespace
+**Create namespace**
 ```
 kubectl create namespace nginx-managed-ondemand
 ```
-Deploy NGINX Pod
+**Deploy NGINX Pod**
 ```
 kubectl apply -f nginx.yaml --namespace nginx-managed-ondemand
 ```
 
-Check to see status
+**Check to see status**
 ```
 kubctl get po -n nginx-managed-ondemand
 ```
 
 ### Deploy to Fargate
-Create Fargate Namespace
+**Create Fargate Namespace**
 ```
 kubectl create namespace nginx-fargate
 ```
-Deploy NGINX Pod
+**Deploy NGINX Pod**
 ```
 kubectl apply -f nginx.yaml --namespace nginx-fargate
 ```
-Check Status
+**Check Status**
 ```
 kubctl get po -n nginx-fargate
 ```
 
 ### Deploy to x86 Bottlerocket managed nodegroup
+**Create namespace**
 ```
 kubectl create namespace nginx-x86-bottlerocket
 ```
-Deploy NGINX Pod
+**Deploy NGINX Pod**
 ```
 kubectl apply -f nginx.yaml --namespace nginx-x86-bottlerocket
 ```
+**Check Status**
+```
+kubctl get po -n nginx-x86-bottlerocket
+```
 
 ### Deploy to ARM Bottlerocket nodegroup
+**Create namespace**
 ```
 kubectl create namespace nginx-arm-bottlerocket
 ```
-Deploy NGINX Pod
+**Deploy NGINX Pod**
 ```
 kubectl apply -f nginx.yaml --namespace nginx-arm-bottlerocket
 ```
+**Check Status**
+```
+kubctl get po -n nginx-arm-bottlerocket
+```
+
+We've now deployed our NGINX pod to Managed nodegroups running on Amazon Linux 2, Bottlerocket on x86, Bottlerocket on ARM, and Fargate using Terraform to create our cluster and it's compute, and using kubectl to deploy our nginx container. Next, we want to use Helm to perform a deployment. 
+
+## Install via helm 
+
+
+
+## Install via ArgoCD
 
 
 
