@@ -149,7 +149,7 @@ module "eks_blueprints" {
       
   #   }
 
-  # }
+  }
 
   fargate_profiles = {
     default = {
