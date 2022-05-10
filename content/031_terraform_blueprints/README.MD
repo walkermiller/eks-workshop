@@ -171,7 +171,7 @@ We've now deployed our NGINX pod to Managed nodegroups running on Amazon Linux 2
 
 ## Install via helm 
 
-
+[Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/060_helm/helm_intro/)
 
 ## Install via ArgoCD
 
