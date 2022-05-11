@@ -1,20 +1,21 @@
 ## Prerequisites
+## Create a bin directory
+mkdir bin
 ### Install Terraform
 ```bash
-sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-sudo yum -y install terraform
+curl -LO https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip
+unzip terraform_1.1.9_linux_amd64.zip -d bin
 ```
 
 ### Install kubectl
 ```bash
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+mv kubectl bin/
 ```
 
 ### Install Helm
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | VERIFY_CHECKSUM=false bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | HELM_INSTALL_DIR=~bin VERIFY_CHECKSUM=false bash
 ```
 
 ### Clone Workshop contnet from github
