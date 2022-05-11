@@ -20,10 +20,6 @@ terraform {
       version = ">= 2.4.1"
     }
   }
-
-  backend "local" {
-    path = "local_tf_state/terraform-main.tfstate"
-  }
 }
 
 data "aws_availability_zones" "available" {}
