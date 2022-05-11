@@ -4,13 +4,13 @@ mkdir bin
 ### Install Terraform
 ```bash
 curl -LO https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip
-unzip terraform_1.1.9_linux_amd64.zip -d bin
+unzip terraform_1.1.9_linux_amd64.zip -d ~/bin
 ```
 
 ### Install kubectl
 ```bash
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
-mv kubectl bin/
+mv kubectl ~/bin/
 ```
 
 ### Install Helm
