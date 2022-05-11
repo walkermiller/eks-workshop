@@ -10,6 +10,7 @@ unzip terraform_1.1.9_linux_amd64.zip -d ~/bin
 ### Install kubectl
 ```bash
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
+chmod +x kubectl
 mv kubectl ~/bin/
 ```
 
