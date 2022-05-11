@@ -25,5 +25,6 @@ variable "environment" {
 variable "zone" {
   type        = string
   description = "zone, e.g. dev or qa or load or ops etc..."
-  default     = "qa"
+  default     = "dev"
+
 }
