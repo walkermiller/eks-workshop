@@ -10,7 +10,7 @@ mkdir bin
 ```bash
 curl -LO https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip
 unzip terraform_1.1.9_linux_amd64.zip -d ~/bin
-rm erraform_1.1.9_linux_amd64.zip
+rm terraform_1.1.9_linux_amd64.zip
 ```
 
 ### Install kubectl
@@ -45,7 +45,7 @@ terraform init -backend-config="bucket=terraform-state-us-east-2-$(aws sts get-c
 
 **Allow Terraform to plan the deployment**
 ```bash
-terrafrom plan
+terraform plan
 ```
 
 **Apply the Terraform**
