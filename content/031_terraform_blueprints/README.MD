@@ -1,5 +1,10 @@
 ## Prerequisites
-## Create a bin directory
+### Create an s3 bucket for our state files
+```
+aws s3 mb s3://terraform-state-us-east-2-$(aws sts get-caller-identity --query "Account" --output text)
+```
+
+### Create a bin directory
 mkdir bin
 ### Install Terraform
 ```bash

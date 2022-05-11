@@ -1,6 +1,11 @@
 terraform {
   required_version = ">= 1.0.1"
 
+  backend "s3" {
+    bucket = join("-","terraform-state-us-east-2",current.account_id)
+    region = "us-east-2"  
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -22,6 +27,8 @@ terraform {
 }
 
 data "aws_availability_zones" "available" {}
+
+data "aws_caller_identity" "current" {}
 
 data "aws_eks_cluster" "cluster" {
   name = module.eks_blueprints.eks_cluster_id
