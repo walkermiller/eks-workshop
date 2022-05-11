@@ -12,7 +12,11 @@ curl -LO https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_am
 unzip terraform_1.1.9_linux_amd64.zip -d ~/bin
 rm terraform_1.1.9_linux_amd64.zip
 ```
-
+### Create a Symobolic link for all the Terrafrom provider details. 
+```bash 
+mkdir ln -s .terraform /tmp/.terraform
+ln -s .terraform /tmp/.terraform
+```
 ### Install kubectl
 ```bash
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
