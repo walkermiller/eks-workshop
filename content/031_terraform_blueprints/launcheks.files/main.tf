@@ -182,7 +182,7 @@ module "eks_blueprints_kubernetes_addons" {
   # EKS Managed Add-ons
   enable_amazon_eks_coredns            = true
   enable_amazon_eks_kube_proxy         = true
-  enable_amazon_eks_aws_ebs_csi_driver = true
+  # enable_amazon_eks_aws_ebs_csi_driver = true
 
   # K8s Add-ons
   enable_aws_efs_csi_driver           = true
