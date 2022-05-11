@@ -98,6 +98,11 @@ Additionally, we will be installing the following AddOns:
   enable_argocd                       = true
   enable_argo_rollouts                = true
 ```
+### Update Kubeconfig (If any of the 'tenent','zone', or 'environment' values were changed, the name below will need to be updated to reflect)
+```bash
+aws eks update-kubeconfig --region us-east-2 --name aws-preprod-qa-eks
+```
+
 ### Check Node status
 ```bash
 kubectl get nodes -o wide
@@ -105,10 +110,7 @@ kubectl get nodes -o wide
 Since nothing has been deployed to the Fargate namespaces, you will not see any Fargate nodes yet. 
 
 ## Deploy to the cluster
-### Update Kubeconfig (If any of the 'tenent','zone', or 'environment' values were changed, the name below will need to be updated to reflect)
-```bash
-aws eks update-kubeconfig --region us-east-2 --name aws-preprod-qa-eks
-```
+
 
 ### Deploy to Managed Nodegroup
 **Create namespace**
