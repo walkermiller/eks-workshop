@@ -2,8 +2,8 @@ terraform {
   required_version = ">= 1.0.1"
 
   backend "s3" {
-    bucket = join("-","terraform-state-us-east-2",current.account_id)
-    region = "us-east-2"  
+    region = "us-east-2"
+    key    = "tf.state"
   }
 
   required_providers {
