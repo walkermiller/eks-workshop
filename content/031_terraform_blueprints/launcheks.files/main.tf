@@ -123,6 +123,7 @@ module "eks_blueprints" {
       subnet_ids      = module.aws_vpc.private_subnets
      bottlerocket     = true
     }
+  }
   #   mg_bottlerocket_x86 = {
   #     node_group_name = "managed-bottlerocket"
   #     instance_types  = ["m5.large"]
