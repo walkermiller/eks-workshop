@@ -24,7 +24,6 @@ terraform {
 
 data "aws_availability_zones" "available" {}
 
-data "aws_caller_identity" "current" {}
 
 data "aws_eks_cluster" "cluster" {
   name = module.eks_blueprints.eks_cluster_id
@@ -121,7 +120,6 @@ module "eks_blueprints" {
       instance_types  = ["m5.large"]
       min_size        = "2"
       subnet_ids      = module.aws_vpc.private_subnets
-     bottlerocket     = true
     }
   }
   #   mg_bottlerocket_x86 = {

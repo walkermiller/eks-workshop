@@ -14,8 +14,8 @@ rm terraform_1.1.9_linux_amd64.zip
 ```
 ### Create a Symobolic link for all the Terrafrom provider details. 
 ```bash 
-mkdir ln -s .terraform /tmp/.terraform
-ln -s .terraform /tmp/.terraform
+mkdir /tmp/.terraform
+ln -s /tmp/.terraform .terraform
 ```
 ### Install kubectl
 ```bash
@@ -27,6 +27,13 @@ mv kubectl ~/bin/
 ### Install Helm
 ```bash
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | HELM_INSTALL_DIR=~/bin VERIFY_CHECKSUM=false bash
+```
+
+### Install argocd cli
+```bash
+sudo curl --silent --location -o ~/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.0.4/argocd-linux-amd64
+sudo chmod +x ~/bin/argocd
+
 ```
 
 ### Clone Workshop contnet from github
@@ -42,6 +49,7 @@ git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git
 ## Deploy EKS
 
 **Initialize the Terraform project**
+Note: If you restart your Cloud Shell environment, this will need to be rerun, as the /tmp directory does not persist. 
 ```bash
 cd eks-workshop/content/031_terraform_blueprints/launcheks.files
 terraform init -backend-config="bucket=terraform-state-us-east-2-$(aws sts get-caller-identity --query "Account" --output text)"
@@ -190,5 +198,6 @@ We've now deployed our NGINX pod to Managed nodegroups running on Amazon Linux 2
 ## Install via ArgoCD
 
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/intermediate/290_argocd/configure/)
+kubectl patch svc argo-cd-argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 
 
