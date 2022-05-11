@@ -171,7 +171,7 @@ module "eks_blueprints" {
 #       }
 #     },
 #   }
-# }
+}
 
 module "eks_blueprints_kubernetes_addons" {
   source = "../../../../terraform-aws-eks-blueprints/modules/kubernetes-addons"
