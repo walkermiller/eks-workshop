@@ -39,7 +39,7 @@ git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git
 **Initialize the Terraform project**
 ```bash
 cd eks-workshop/content/031_terraform_blueprints/launcheks.files
-terraform init
+terraform init -backend-config="bucket=terraform-state-us-east-2-$(aws sts get-caller-identity --query "Account" --output text)"
 ```
 
 **Allow Terraform to plan the deployment**
