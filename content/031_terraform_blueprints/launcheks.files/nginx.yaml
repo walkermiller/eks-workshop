@@ -9,5 +9,4 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: IfNotPresent
-  # nodeSelector:
-  #   env: BOTTLEROCKET_x86
+
