@@ -22,7 +22,7 @@ mv kubectl ~/bin/
 
 ### Install Helm
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | HELM_INSTALL_DIR=~/bin VERIFY_CHECKSUM=false bash
+curl -sSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | HELM_INSTALL_DIR=~/bin VERIFY_CHECKSUM=false bash
 ```
 
 ### Install argocd cli
