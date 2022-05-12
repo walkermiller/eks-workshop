@@ -115,25 +115,18 @@ module "eks_blueprints" {
 
   # EKS MANAGED NODE GROUPS
   managed_node_groups = {
-    mg_4 = {
-      node_group_name = "managed-ondemand"
+
+    mg_bottlerocket_x86 = {
+      node_group_name = "managed-bottlerocket"
       instance_types  = ["m5.large"]
       min_size        = "2"
       subnet_ids      = module.aws_vpc.private_subnets
-    }
-  }
-  #   mg_bottlerocket_x86 = {
-  #     node_group_name = "managed-bottlerocket"
-  #     instance_types  = ["m5.large"]
-  #     min_size        = "2"
-  #     subnet_ids      = module.aws_vpc.private_subnets
-  #     ami_type        = "BOTTLEROCKET_x86_64"
-  #     release_version = ""
-  #     k8s_labels ={
-  #       Environment = "preprod"
-  #       Zone        = "dev"
-  #       env         = "BOTTLEROCKET_x86"
-  #     }
+      ami_type        = "BOTTLEROCKET_x86_64"
+      release_version = ""
+      k8s_labels ={
+        Environment = local.environment
+        Zone        = local.zone
+      }
       
   #   }
   #   mg_bottlerocket_arm = {
