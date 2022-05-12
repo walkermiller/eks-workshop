@@ -15,7 +15,7 @@ rm terraform_1.1.9_linux_amd64.zip
 ### Create a Symobolic link for all the Terrafrom provider details. 
 ```bash 
 mkdir /tmp/.terraform
-ln -s /tmp/.terraform .terraform
+ln -s /tmp/.terraform /home/cloudshell-user/eks-workshop/content/031_terraform_blueprints/launcheks.files/.terraform
 ```
 ### Install kubectl
 ```bash
