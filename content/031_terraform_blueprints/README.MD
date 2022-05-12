@@ -52,7 +52,6 @@ git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git
 Note: If you restart your Cloud Shell environment, this will need to be rerun, as the /tmp directory does not persist. 
 ```bash
 cd eks-workshop/content/031_terraform_blueprints/launcheks.files
-terraform init -backend-config="bucket=terraform-state-us-east-2-$(aws sts get-caller-identity --query "Account" --output text)"
 ```
 
 **Allow Terraform to plan the deployment**
@@ -76,35 +75,11 @@ managed_node_groups = {
      bottlerocket     = true
     }
 ```
-And, a fargate instance profile for the default namespace:
-```yaml
-fargate_profiles = {
-    default = {
-      fargate_profile_name = "default"
-      fargate_profile_namespaces = [{
-        namespace = "default"
-        k8s_labels = {
-          Environment = "preprod"
-          Zone        = "dev"
-          env         = "fargate"
-        }
-      }]
-
-      subnet_ids = module.aws_vpc.private_subnets
-
-      additional_tags = {
-        ExtraTag = "Fargate"
-      }
-    },
-  }
-}
-```
 Additionally, we will be installing the following AddOns:
 ```
   # EKS Managed Add-ons
   enable_amazon_eks_coredns            = true
   enable_amazon_eks_kube_proxy         = true
-  enable_amazon_eks_aws_ebs_csi_driver = true
 
   # K8s Add-ons
   enable_aws_efs_csi_driver           = true
@@ -118,6 +93,35 @@ Additionally, we will be installing the following AddOns:
   enable_argocd                       = true
   enable_argo_rollouts                = true
 ```
+
+## Enable Fargate
+### Create the Fargate profile
+Uncomment the following lines from main.tf
+```yaml
+fargate_profiles = {
+    default = {
+      fargate_profile_name = "default"
+      fargate_profile_namespaces = [{
+        namespace = "default"
+        k8s_labels = {}
+      }]
+
+      subnet_ids = module.aws_vpc.private_subnets
+
+      additional_tags = {
+        ExtraTag = "Fargate"
+      }
+    },
+  }
+}
+```
+Run Terraform plan and apply
+```bash
+terraform plna
+terraform apply
+```
+
+
 ### Update Kubeconfig (If any of the 'tenent','zone', or 'environment' values were changed, the name below will need to be updated to reflect)
 ```bash
 aws eks update-kubeconfig --region us-east-2 --name aws-preprod-qa-eks
@@ -204,3 +208,7 @@ export ARGOCD_SERVER=`kubectl get svc argo-cd-argocd-server -n argocd -o json | 
 export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
 ~~~
+
+## Using EFS
+[Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/190_efs/launching-efs/)
+Use the correct cluster naem
