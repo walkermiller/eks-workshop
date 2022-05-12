@@ -29,7 +29,6 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | HELM_
 ```bash
 sudo curl --silent --location -o ~/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.0.4/argocd-linux-amd64
 sudo chmod +x ~/bin/argocd
-
 ```
 
 ### Clone Workshop contnet from github
@@ -194,7 +193,7 @@ Login to argocd cli
 export ARGOCD_SERVER=`kubectl get svc argo-cd-argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].hostname'`
 export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
-~~~
+```
 
 ## Using EFS
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/190_efs/launching-efs/)
