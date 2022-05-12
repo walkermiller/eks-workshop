@@ -45,7 +45,7 @@ git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git
 ### Create a Symobolic link for all the Terrafrom provider details. 
 ```bash 
 mkdir /tmp/.terraform
-ln -s /tmp/.terraform /home/cloudshell-user/eks-workshop/content/031_terraform_blueprints/launcheks.files/.terraform
+ln -s /tmp/.terraform ~/eks-workshop/content/031_terraform_blueprints/launcheks.files/.terraform
 ```
 
 ### Move to the working directory
@@ -55,7 +55,7 @@ cd eks-workshop/content/031_terraform_blueprints/launcheks.files
 ### Copy reconnect script
 This script should be used if your cloud shell needs to be restarted for any reason. Copying it to the bin directory allows us to call it whenever we need to. 
 ```
-cp eks-workshop/content/031_terraform_blueprints/launcheks.files/reconnect ~/bin/
+cp ~/eks-workshop/content/031_terraform_blueprints/launcheks.files/reconnect ~/bin/
 ```
 
 ## Deploy EKS
