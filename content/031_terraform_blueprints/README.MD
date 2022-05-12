@@ -12,11 +12,7 @@ curl -LO https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_am
 unzip terraform_1.1.9_linux_amd64.zip -d ~/bin
 rm terraform_1.1.9_linux_amd64.zip
 ```
-### Create a Symobolic link for all the Terrafrom provider details. 
-```bash 
-mkdir /tmp/.terraform
-ln -s /tmp/.terraform /home/cloudshell-user/eks-workshop/content/031_terraform_blueprints/launcheks.files/.terraform
-```
+
 ### Install kubectl
 ```bash
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
@@ -45,6 +41,13 @@ git clone https://github.com/walkermiller/eks-workshop
 ```sh
 git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git
 ```
+
+### Create a Symobolic link for all the Terrafrom provider details. 
+```bash 
+mkdir /tmp/.terraform
+ln -s /tmp/.terraform /home/cloudshell-user/eks-workshop/content/031_terraform_blueprints/launcheks.files/.terraform
+```
+
 
 ## Deploy EKS
 
