@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+cd eks-workshop/content/031_terraform_blueprints/launcheks.files
+rm .terrafrom
+mkdir /tmp/.terraform
+ln -s /tmp/.terraform .terraform
+terraform init -backend-config="bucket=terraform-state-us-east-2-$(aws sts get-caller-identity --query "Account" --output text)"

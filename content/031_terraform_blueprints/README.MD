@@ -198,6 +198,9 @@ We've now deployed our NGINX pod to Managed nodegroups running on Amazon Linux 2
 ## Install via ArgoCD
 
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/intermediate/290_argocd/configure/)
+~~~bash
 kubectl patch svc argo-cd-argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-
-
+export ARGOCD_SERVER=`kubectl get svc argo-cd-argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].hostname'`
+export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
+~~~
