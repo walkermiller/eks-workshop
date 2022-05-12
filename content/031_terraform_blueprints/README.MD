@@ -52,6 +52,7 @@ git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git
 Note: If you restart your Cloud Shell environment, this will need to be rerun, as the /tmp directory does not persist. 
 ```bash
 cd eks-workshop/content/031_terraform_blueprints/launcheks.files
+terraform init -backend-config="bucket=terraform-state-us-east-2-$(aws sts get-caller-identity --query "Account" --output text)"
 ```
 
 **Allow Terraform to plan the deployment**
@@ -117,7 +118,7 @@ fargate_profiles = {
 ```
 Run Terraform plan and apply
 ```bash
-terraform plna
+terraform plan
 terraform apply
 ```
 
