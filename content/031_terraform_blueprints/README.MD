@@ -48,13 +48,21 @@ mkdir /tmp/.terraform
 ln -s /tmp/.terraform /home/cloudshell-user/eks-workshop/content/031_terraform_blueprints/launcheks.files/.terraform
 ```
 
+### Move to the working directory
+```bash
+cd eks-workshop/content/031_terraform_blueprints/launcheks.files
+```
+### Copy reconnect script
+This script should be used if your cloud shell needs to be restarted for any reason. Copying it to the bin directory allows us to call it whenever we need to. 
+```
+cp cd eks-workshop/content/031_terraform_blueprints/launcheks.files/reconnect ~/bin/
+```
 
 ## Deploy EKS
 
 **Initialize the Terraform project**
 Note: If you restart your Cloud Shell environment, this will need to be rerun, as the /tmp directory does not persist. 
 ```bash
-cd eks-workshop/content/031_terraform_blueprints/launcheks.files
 terraform init -backend-config="bucket=terraform-state-us-east-2-$(aws sts get-caller-identity --query "Account" --output text)"
 ```
 
