@@ -179,11 +179,12 @@ kubectl get po -n nginx-fargate
 ## Installs via Helm 
 
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/060_helm/helm_intro/)
+***Note:*** You do not need to resintall Helm. 
 
 ## Installs via ArgoCD
 
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/intermediate/290_argocd/configure/)
-The following commands are modified to reflect this deployment. 
+***Note:*** The following commands are modified to reflect this deployment. 
 Enable an external Load Balancer
 ```bash
 kubectl patch svc argo-cd-argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
@@ -197,6 +198,6 @@ argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
 
 ## Using EFS
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/190_efs/launching-efs/)
-
+***Notes:***
 - Use the correct cluster name.
 - You do not have to redelpoy the EFS CSI Driver
