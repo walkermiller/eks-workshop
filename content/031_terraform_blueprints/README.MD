@@ -55,7 +55,7 @@ cd eks-workshop/content/031_terraform_blueprints/launcheks.files
 ### Copy reconnect script
 This script should be used if your cloud shell needs to be restarted for any reason. Copying it to the bin directory allows us to call it whenever we need to. 
 ```
-cp cd eks-workshop/content/031_terraform_blueprints/launcheks.files/reconnect ~/bin/
+cp eks-workshop/content/031_terraform_blueprints/launcheks.files/reconnect ~/bin/
 ```
 
 ## Deploy EKS
