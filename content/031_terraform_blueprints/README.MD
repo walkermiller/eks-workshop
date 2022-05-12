@@ -216,4 +216,6 @@ argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
 
 ## Using EFS
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/190_efs/launching-efs/)
-***Use the correct cluster naem***
+
+- Use the correct cluster name.
+- You do not have to redelpoy the EFS CSI Driver

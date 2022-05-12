@@ -127,8 +127,8 @@ module "eks_blueprints" {
         Environment = local.environment
         Zone        = local.zone
       }
-      
-  #   }
+    }
+      #   }
   #   mg_bottlerocket_arm = {
   #     node_group_name = "managed-bottlerocket-arm"
   #     instance_types  = ["m6g.large"]
@@ -143,8 +143,8 @@ module "eks_blueprints" {
   #     }
       
   #   }
+  }
 
-  # }
 
 #   fargate_profiles = {
 #     default = {
