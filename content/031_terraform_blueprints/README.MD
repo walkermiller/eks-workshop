@@ -195,15 +195,20 @@ kubctl get po -n nginx-arm-bottlerocket
 
 We've now deployed our NGINX pod to Managed nodegroups running on Amazon Linux 2, Bottlerocket on x86, Bottlerocket on ARM, and Fargate using Terraform to create our cluster and it's compute, and using kubectl to deploy our nginx container. Next, we want to use Helm to perform a deployment. 
 
-## Install via helm 
+## Installs via helm 
 
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/060_helm/helm_intro/)
 
-## Install via ArgoCD
+## Installs via ArgoCD
 
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/intermediate/290_argocd/configure/)
-~~~bash
+The following commands are modified to reflect this deployment. 
+Enable an external Load Balancer
+```bash
 kubectl patch svc argo-cd-argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+Login to argocd cli
+```bash
 export ARGOCD_SERVER=`kubectl get svc argo-cd-argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].hostname'`
 export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
@@ -211,4 +216,4 @@ argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
 
 ## Using EFS
 [Follow the instructions in the Workshop](https://www.eksworkshop.com/beginner/190_efs/launching-efs/)
-Use the correct cluster naem
+***Use the correct cluster naem***
