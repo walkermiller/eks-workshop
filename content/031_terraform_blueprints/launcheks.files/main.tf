@@ -146,23 +146,21 @@ module "eks_blueprints" {
   }
 
 
-#   fargate_profiles = {
-#     default = {
-#       fargate_profile_name = "default"
-#       fargate_profile_namespaces = [
-#         {namespace = "default" 
-#         k8s_labels = {} }, 
-#         {namespace = "nginx-fargate"
-#         k8s_labels = {} }
-#         ]
+  fargate_profiles = {
+    default = {
+      fargate_profile_name = "default"
+      fargate_profile_namespaces = [
+        {namespace = "default"  k8s_labels = {} }, 
+        {namespace = "nginx-fargate" k8s_labels = {} }
+        ]
 
-#       subnet_ids = module.aws_vpc.private_subnets
+      subnet_ids = module.aws_vpc.private_subnets
 
-#       additional_tags = {
-#         ExtraTag = "Fargate"
-#       }
-#     },
-#   }
+      additional_tags = {
+        ExtraTag = "Fargate"
+      }
+    },
+  }
 }
 
 module "eks_blueprints_kubernetes_addons" {
